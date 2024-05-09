@@ -1,3 +1,11 @@
+import tkinter as tk
+from tkinter.colorchooser import askcolor 
+from tkinter import messagebox
+from tkinter import filedialog
+import math
+import subprocess
+
+# fonction pour ouvrir un fichier :---------------------------------------------------------------------------------------------------- 
 
 
 

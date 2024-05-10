@@ -5,16 +5,35 @@ from tkinter import filedialog
 import math
 import subprocess
 
-# fonction pour ouvrir un fichier :---------------------------------------------------------------------------------------------------- 
-
-
-
-
-
-
-
-
-
+# fonction pour ouvrir un fichier :----------------------------------------------------------------------------------------------------
+def ouvrir_fichier():
+    fichier = filedialog.askopenfile(defaultextension=".txt" , filetypes=[("Fichiers texte" , ".txt"), ("Tous les fichiers","*.*")]) #ouvrir le fichier avec extention txt
+   
+    if fichier: #ecraser le nouveau fichier qui a ete ouvert
+        editeur.delete(1.0 , tk.END)
+        editeur.insert(tk.END, fichier.read())
+ 
+# fonction pour enregistrer un fichier()------------------------------------------------------------------------------------------------
+def enregistrer_fichier():
+    fichier = filedialog.asksaveasfile(defaultextension=".txt" , filetypes=[("Fichiers texte" , ".txt"), ("Tous les fichiers","*.*")])
+    if fichier:
+        fichier.write= editeur.get(1.0 , tk.END)
+ 
+#fonction pour enregistrer sous du fichier--------------------------------------------------------------------------------------------------
+def enregistrer_fichier_sous():
+    fichier = filedialog.asksaveasfile(defaultextension=".txt" , filetypes=[("Fichiers texte" , ".txt"), ("Tous les fichiers","*.*")])
+    if fichier:
+        fichier.write(editeur.get(1.0, tk.END)) #recupere ce qui est ecris sur l'editeur et l'enregistre et 1.0 cest ligne et colonne
+#fonction pour faire copier :--------------------------------------------------------------------------------------------------------------
+ 
+def copier():
+    editeur.clipboard_clear()  # Efface le contenu précédent du presse-papiers
+    editeur.clipboard_append(editeur.selection_get())  # Copie le texte sélectionné dans le presse-papiers
+ 
+#fonction pour faire coller : ---------------------------------------------------------------------------------
+def coller():
+    texte_coller = editeur.clipboard_get()  # Récupère le texte actuellement dans le presse-papiers
+    editeur.insert(tk.INSERT, texte_coller)  # Insère le texte stocké dans le presse-papiers à la position du curseur
 
 # Fonction pour le choix du couleur :--------------------------------------------------------------------
     
